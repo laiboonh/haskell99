@@ -35,3 +35,21 @@ myFlatten :: NestedList a -> [a]
 myFlatten (Elem x) = [x]
 myFlatten (List []) = []
 myFlatten (List (x:xs)) = myFlatten x ++ myFlatten (List xs)
+
+compress :: Eq a => [a] -> [a]
+compress [] = []
+compress [x] = [x]
+compress (x1:x2:xs) | x1 == x2 = compress (x1:xs)
+                    | otherwise = x1:(compress (x2:xs)) 
+
+pack :: Eq a => [a] -> [[a]]
+pack [] = []
+pack [x] = [[x]]
+pack (x:xs) = if x `elem` (head packed)
+            then (x:(head packed)) : (tail packed)
+            else [x] : packed   
+  where packed = pack xs  
+
+encode :: Eq a => [a] -> [(Int, a)]
+encode xs = map countElem $ pack xs 
+  where countElem elems = (length elems, head elems)

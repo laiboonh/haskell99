@@ -68,3 +68,21 @@ spec7 = do
       myFlatten (Elem 5) `shouldBe` [5]
       myFlatten (List [Elem 1, List [Elem 2, List [Elem 3, Elem 4], Elem 5]]) `shouldBe` [1,2,3,4,5]
       myFlatten (List [] :: NestedList Int) `shouldBe` ([] :: [Int])
+
+spec8 :: Spec
+spec8 = do
+  describe "Problem10.compress" $ do
+    it "If a list contains repeated elements they should be replaced with a single copy of the element. The order of the elements should not be changed." $ do
+      compress "aaaabccaadeeee" `shouldBe` "abcade"
+
+spec9 :: Spec
+spec9 = do
+  describe "Problem10.pack" $ do
+    it "Pack consecutive duplicates of list elements into sublists. If a list contains repeated elements they should be placed in separate sublists." $ do
+      pack ['a', 'a', 'a', 'a', 'b', 'c', 'c', 'a', 'a', 'd', 'e', 'e', 'e', 'e'] `shouldBe` ["aaaa","b","cc","aa","d","eeee"]
+
+spec10 :: Spec
+spec10 = do
+  describe "Problem10.encode" $ do
+    it "Consecutive duplicates of elements are encoded as lists (N E) where N is the number of duplicates of the element E." $ do
+      encode "aaaabccaadeeee" `shouldBe` [(4,'a'),(1,'b'),(2,'c'),(2,'a'),(1,'d'),(4,'e')]

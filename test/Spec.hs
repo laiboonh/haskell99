@@ -18,3 +18,9 @@ main = do
   hspec spec12
   hspec spec13
   hspec spec14
+  hspec spec15
+  hspec spec16
+  hspec spec17
+  hspec spec18
+  hspec spec19
+  hspec spec20

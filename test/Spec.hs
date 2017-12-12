@@ -1,5 +1,6 @@
 import Problem10Spec
 import Problem20Spec
+import Problem28Spec
 import Test.Hspec
 
 main :: IO ()
@@ -24,3 +25,4 @@ main = do
   hspec spec18
   hspec spec19
   hspec spec20
+  hspec spec21
